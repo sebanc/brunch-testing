@@ -10,8 +10,18 @@ concurrency:
   group: environment-${{ github.ref }}
   cancel-in-progress: true
 jobs:
+  check-secrets:
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Check for BRUNCH_PRIV and BRUNCH_PEM secrets
+        run: |
+          if [ -z "${{ secrets.BRUNCH_PRIV }}" ] || [ -z "${{ secrets.BRUNCH_PEM }}" ]; then
+            echo "Error: BRUNCH_PRIV and/or BRUNCH_PEM secrets are not set."
+            exit 1
+          fi
   prepare-kernels:
     name: Prepare Kernels
+    needs: check-secrets
     runs-on: ubuntu-24.04
     outputs:
       matrix: ${{ steps.kernels.outputs.matrix }}
