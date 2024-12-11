@@ -179,3 +179,4 @@ jobs:
           name: "${{ env.RELEASE_NAME }}"
           commit: "${{ github.ref_name }}"
           body: "${{ github.event.head_commit.message }}\n\nrelease_sha256sum=${{ env.RELEASE_SHA256 }}\n"
+          allowUpdates: true
