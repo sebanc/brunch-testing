@@ -741,8 +741,8 @@ index 48c3e826713f6..4c08926139dbf 100644
  	ssam_temp->sensors = sensors;
  
 +	/* Retrieve the name for each available sensor. */
-+	for (channel = 0; channel < SSAM_TMP_SENSOR_MAX_COUNT; channel++)
-+	{
++	for (channel = 0; channel < SSAM_TMP_SENSOR_MAX_COUNT; channel++) {
++
 +		if (!(sensors & BIT(channel)))
 +			continue;
 +
