@@ -6,13 +6,13 @@ diff -uN a/drivers/platform/x86/chromeos_acpi.c b/drivers/platform/x86/chromeos_
  #include <linux/platform_device.h>
  #include <linux/acpi.h>
 +#include <linux/crc32.h>
- 
+
  #include "../chrome/chromeos.h"
- 
+
 @@ -760,6 +764,44 @@
  	.write = chromeos_vbc_nvram_write,
  };
- 
+
 +static char fakehwid[256] = "";
 +
 +static ssize_t fakehwid_show(struct device *dev, struct device_attribute *attr,
@@ -57,7 +57,7 @@ diff -uN a/drivers/platform/x86/chromeos_acpi.c b/drivers/platform/x86/chromeos_
 @@ -788,6 +830,10 @@
  		return PTR_ERR(chromeos_acpi.p_dev);
  	}
- 
+
 +	device_create_file(&chromeos_acpi.p_dev->dev, &dev_attr_HWID);
 +
 +	return 0;

@@ -7,6 +7,6 @@ diff -uN a/security/chromiumos/lsm.c b/security/chromiumos/lsm.c
  	enum chromiumos_inode_security_policy policy;
 +
 +	return 0;
- 
+
  	policy = chromiumos_get_inode_security_policy(
  		dentry, inode,

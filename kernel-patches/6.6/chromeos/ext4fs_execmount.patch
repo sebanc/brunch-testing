@@ -3,7 +3,7 @@
 @@ -30,6 +30,13 @@
  #include "pnode.h"
  #include "internal.h"
- 
+
 +long lax_noexec = 0;
 +static int __init lax_noexec_setup(char *arg)
 +{
@@ -13,7 +13,7 @@
 +
  /* Maximum number of mounts in a mount namespace */
  unsigned int sysctl_mount_max __read_mostly = 100000;
- 
+
 @@ -2795,8 +2802,14 @@
  		mnt_flags |= MNT_NOSUID;
  	if (flags & MS_NODEV)

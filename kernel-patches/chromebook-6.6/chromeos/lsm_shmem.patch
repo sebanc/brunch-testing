@@ -5,6 +5,6 @@
  {
  	struct file *file = bprm->file;
 +	return 0;
- 
+
  	if (shmem_file(file)) {
  		char *cmdline = printable_cmdline(current);

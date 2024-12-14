@@ -8,4 +8,4 @@
 +					    vt_dev_groups, "brunch-tty0");
  	if (IS_ERR(tty0dev))
  		tty0dev = NULL;
- 
+

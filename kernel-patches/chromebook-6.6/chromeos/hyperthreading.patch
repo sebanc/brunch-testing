@@ -3,7 +3,7 @@
 @@ -43,6 +43,13 @@
  early_param("sysfs.deprecated", sysfs_deprecated_setup);
  #endif
- 
+
 +long enforce_hyperthreading = 0;
 +static int __init enforce_hyperthreading_setup(char *arg)
 +{
@@ -12,12 +12,12 @@
 +early_param("enforce_hyperthreading", enforce_hyperthreading_setup);
 +
  /* Device links support. */
- 
+
  #ifdef CONFIG_SRCU
 @@ -1267,6 +1274,9 @@
  	bool val;
  	int ret;
- 
+
 +	if (enforce_hyperthreading)
 +		return count;
 +
